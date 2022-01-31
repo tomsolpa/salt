@@ -595,7 +595,7 @@ def _get_snapshot_version_metadata_xml(
 
     try:
         request = urllib.request.Request(snapshot_version_metadata_url, None, headers)
-        snapshot_version_metadata_xml = urllib.request.urlopen(request).read()
+        snapshot_version_metadata_xml = urllib.request.urlopen(request).read().decode('utf-8')
     except (HTTPError, URLError) as err:
         message = "Could not fetch data from url: {}. ERROR: {}".format(
             snapshot_version_metadata_url, err
@@ -671,7 +671,7 @@ def __find_latest_version(
 
     try:
         request = urllib.request.Request(latest_version_url, None, headers)
-        version = urllib.request.urlopen(request).read()
+        version = urllib.request.urlopen(request).read().decode('utf-8')
     except (HTTPError, URLError) as err:
         message = "Could not fetch data from url: {}. ERROR: {}".format(
             latest_version_url, err
